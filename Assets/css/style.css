@@ -13,7 +13,10 @@ textarea {
   padding: 10px;
 }
 
-
+.to-do {
+  flex: 0 0 70vw;
+  width: 100%;
+}
 
 .jumbotron {
   text-align: center;
@@ -36,6 +39,8 @@ textarea {
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;
+  margin-right: 0px !important; /* Attempting overrite of _grid.scss line 24 */
+  margin-left: 0px !important;  /* Attempting overrite of _grid.scss line 24 */
 }
 
 .hour {
@@ -86,15 +91,13 @@ textarea {
 
 .saveBtn, .hour {
   flex: 0 0 10vw;
-}
-
-#c-todo-r-a {
-  flex: 0 0 70vw;
-  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .text-box {
   display: inline;
   box-sizing: border-box;
   width: inherit;
+  font-size: 18px;
 }

@@ -90,12 +90,11 @@ textarea {
 
 #c-todo-r-a {
   flex: 0 0 70vw;
+  width: 100%;
 }
 
 .text-box {
   display: inline;
   box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   width: inherit;
 }

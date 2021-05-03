@@ -13,6 +13,8 @@ textarea {
   padding: 10px;
 }
 
+
+
 .jumbotron {
   text-align: center;
   background-color: transparent;
@@ -88,4 +90,12 @@ textarea {
 
 #c-todo-r-a {
   flex: 0 0 70vw;
+}
+
+.text-box {
+  display: inline;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: inherit;
 }

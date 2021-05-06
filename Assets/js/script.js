@@ -88,13 +88,9 @@ function saveDescription(saveId) {
 
 function retrieveDescription() {
     console.log(`01. You're inside the retrieveDescription function`)
-    console.log(`02. Attempt to get key or value or anything - 01:  ${memory['10\:00 AM']}`);
-    console.log(`03. Attempt to get key or value or anything - 02:  ${JSON.parse(localStorage.getItem(memory['10\:00 AM']))} `)
-    console.log(`04. Attempt to get key or value or anything - 03:  ${localStorage.getItem(memory[0])}`)
-    var memoryItem = JSON.parse(localStorage.getItem(memory['10\:00 AM']));
-    console.log(`05. memoryItem[0]:  ${memoryItem}`);
+    console.log(`05. Attempt to get key or value or anything - 03:  ${localStorage.getItem('11:00 AM')}`)
+    console.log(`06  This will be inserted into the description text row:  ${$("#tb-c").val(localStorage.getItem('11:00 AM'))}`);
 
-    /*
     for (var i = 0; i < memory[i]; i++) {
         var memoryItem = JSON.parse(localStorage.getItem(memory[i]));
         console.log(`03. memoryItem:  ${memoryItem}`)
@@ -105,7 +101,7 @@ function retrieveDescription() {
             return;
         }
     }
-    */
+    
 };
 
 saveButton.on('click', function() {

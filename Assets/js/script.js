@@ -49,11 +49,11 @@ function dateTodayHeader() {
     headerDateSpace.text(dateToday);
 };
 
-function saveDescription() {
-    console.log(`idTextAreaDiv[0]:  ${idTextAreaDiv[0]}`);
-    console.log(`tb-a:  ${$('#tb-a').val()}`);
-    console.log(`idTextAreaBox[0]:  ${idTextAreaBox[0].val()}`);
-    console.log(`tb-b:  ${$('#tb-b').val()}`);
+function saveDescription(saveId) {
+    // console.log(`3.  saveId:  ${saveId}`);
+    // console.log(`tb-a:  ${$('#tb-a').val()}`);
+    // console.log(`idTextAreaBox[0]:  ${idTextAreaBox[0].val()}`);
+    // console.log(`tb-b:  ${$('#tb-b').val()}`);
 
     var memory = {
         '9\:00 AM': idTextAreaBox[0].val(),
@@ -66,20 +66,43 @@ function saveDescription() {
         '04\:00 PM': idTextAreaBox[7].val(),
         '05\:00 PM': idTextAreaBox[8].val()
     }
-
-    if ($('#c-save-r-a')) {
-        //console.log(`VALUE OF 9\:00:  ${descriptionA.value.trim()}`);
-        localStorage.setItem('9\:00 TEST', JSON.stringify(memory['9\:00 AM']));
-    } else if ($('#c-save-r-b')) {
-        localStorage.setItem('10\:00 YEA', JSON.stringify(memory['10\:00 AM']));
-    } else if ($('#c-save-r-c')) {
-        localStorage.setItem('11\:00 OKAY', JSON.stringify(memory['11\:00 AM']));
-    } // START BACK HERE
+    /*
+    console.log(`DISPLAY memory KEY:  ${Object.keys(memory)[0]}`);
+    console.log(`DISPLAY ID OF SAVE BUTTON CLICKED -- A -- ${$('#c-save-r-a').clicked == false}:  `);
+    if (saveButton.attr('id') == 'c-save-r-a') {
+        console.log(`RESULTS OF variable AS ENTIRETY OF IF STATEMENT:  ${$('#c-save-r-a').attr('id')}:  `)
+    } else {
+        console.log(`RESULTS OF variable AS ENTIRETY OF IF STATEMENT:  made it to else`)
+        return;
+    };
+    */
+    // console.log(`T or F -- ${this.is == 'c-save-r-b'}:  `);
+    // console.log(`4.  BUTTON CLICKED:  ${this.id}`);
+    // console.log(`5.  saveId:  ${saveId}`);
+    if (saveId == 'c-save-r-a') {
+        localStorage.setItem(Object.keys(memory)[0], JSON.stringify(memory['9\:00 AM']));
+    } else if (saveId == 'c-save-r-b') {
+        localStorage.setItem(Object.keys(memory)[1], JSON.stringify(memory['10\:00 AM']));
+    } else if (saveId === 'c-save-r-c') {
+        localStorage.setItem(Object.keys(memory)[2], JSON.stringify(memory['11\:00 AM']));
+    } else if (saveId === 'c-save-r-d') {
+        localStorage.setItem(Object.keys(memory)[3], JSON.stringify(memory['12\:00 PM']));
+    } else if (saveId === 'c-save-r-e') {
+        localStorage.setItem(Object.keys(memory)[4], JSON.stringify(memory['01\:00 PM']));
+    } else if (saveId === 'c-save-r-f') {
+        localStorage.setItem(Object.keys(memory)[5], JSON.stringify(memory['02\:00 PM']));
+    } else if (saveId === 'c-save-r-g') {
+        localStorage.setItem(Object.keys(memory)[6], JSON.stringify(memory['03\:00 PM']));
+    } else if (saveId === 'c-save-r-h') {
+        localStorage.setItem(Object.keys(memory)[7], JSON.stringify(memory['04\:00 PM']));
+    } else if (saveId === 'c-save-r-i') {
+        localStorage.setItem(Object.keys(memory)[8], JSON.stringify(memory['05\:00 PM']));
+    }
     
 }
 
 
-saveButton.on('click', function(event) {
-    event.preventDefault();
-    saveDescription()
+saveButton.on('click', function() {
+    var saveId = this.id
+    saveDescription(saveId);
 });

@@ -43,17 +43,13 @@ function timeLabelColorEval() {
 };
 
 function dateTodayHeader() {
-    var headerSpace = $(".jumbotron");
+    var headerSpace = $(".jumbotron"); // is this line needed?
     var headerDateSpace = $("#currentDay");
     dateToday = moment().format("dddd, MMMM Do YYYY");
     headerDateSpace.text(dateToday);
 };
 
 function saveDescription(saveId) {
-    // console.log(`3.  saveId:  ${saveId}`);
-    // console.log(`tb-a:  ${$('#tb-a').val()}`);
-    // console.log(`idTextAreaBox[0]:  ${idTextAreaBox[0].val()}`);
-    // console.log(`tb-b:  ${$('#tb-b').val()}`);
 
     var memory = {
         '9\:00 AM': idTextAreaBox[0].val(),
@@ -66,19 +62,7 @@ function saveDescription(saveId) {
         '04\:00 PM': idTextAreaBox[7].val(),
         '05\:00 PM': idTextAreaBox[8].val()
     }
-    /*
-    console.log(`DISPLAY memory KEY:  ${Object.keys(memory)[0]}`);
-    console.log(`DISPLAY ID OF SAVE BUTTON CLICKED -- A -- ${$('#c-save-r-a').clicked == false}:  `);
-    if (saveButton.attr('id') == 'c-save-r-a') {
-        console.log(`RESULTS OF variable AS ENTIRETY OF IF STATEMENT:  ${$('#c-save-r-a').attr('id')}:  `)
-    } else {
-        console.log(`RESULTS OF variable AS ENTIRETY OF IF STATEMENT:  made it to else`)
-        return;
-    };
-    */
-    // console.log(`T or F -- ${this.is == 'c-save-r-b'}:  `);
-    // console.log(`4.  BUTTON CLICKED:  ${this.id}`);
-    // console.log(`5.  saveId:  ${saveId}`);
+
     if (saveId == 'c-save-r-a') {
         localStorage.setItem(Object.keys(memory)[0], JSON.stringify(memory['9\:00 AM']));
     } else if (saveId == 'c-save-r-b') {
@@ -97,12 +81,41 @@ function saveDescription(saveId) {
         localStorage.setItem(Object.keys(memory)[7], JSON.stringify(memory['04\:00 PM']));
     } else if (saveId === 'c-save-r-i') {
         localStorage.setItem(Object.keys(memory)[8], JSON.stringify(memory['05\:00 PM']));
+    } else {
+        return;
     }
-    
-}
+};
 
+function retrieveDescription() {
+    console.log(`01. You're inside the retrieveDescription function`)
+    console.log(`02. Attempt to get key or value or anything - 01:  ${memory['10\:00 AM']}`);
+    console.log(`03. Attempt to get key or value or anything - 02:  ${JSON.parse(localStorage.getItem(memory['10\:00 AM']))} `)
+    console.log(`04. Attempt to get key or value or anything - 03:  ${localStorage.getItem(memory[0])}`)
+    var memoryItem = JSON.parse(localStorage.getItem(memory['10\:00 AM']));
+    console.log(`05. memoryItem[0]:  ${memoryItem}`);
+
+    /*
+    for (var i = 0; i < memory[i]; i++) {
+        var memoryItem = JSON.parse(localStorage.getItem(memory[i]));
+        console.log(`03. memoryItem:  ${memoryItem}`)
+        // if (memory[i] !== null && memory[i] !== undefined) {
+        if (memoryItem !== null) {
+            idTextAreaBox[i].text(memoryItem)
+        } else {
+            return;
+        }
+    }
+    */
+};
 
 saveButton.on('click', function() {
     var saveId = this.id
     saveDescription(saveId);
+    retrieveDescription();
 });
+
+function initializeDescriptions() {
+    retrieveDescription();
+}
+
+initializeDescriptions();

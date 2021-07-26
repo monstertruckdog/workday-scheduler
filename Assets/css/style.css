@@ -103,3 +103,14 @@ textarea {
   width: inherit;
   font-size: 18px;
 }
+
+.toast-container {
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.save-toast {
+  background-color: #fff44f;
+  color: #342e37;
+}

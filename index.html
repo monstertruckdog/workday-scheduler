@@ -28,11 +28,21 @@
   </head>
 
   <body>
+    
+
     <header class="jumbotron">
+      
       <h1 class="display-5">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
     </header>
+      <div class="toast-container" aria-live="polite" aria-atomic="true">
+        <div class="toast save-toast hide justify-content-center align-items-center" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="true" data-delay="5000">
+          <div class="toast-body">
+            <h5>Data saved successfully</h5>
+          </div>
+        </div>
+      </div>
     <div class="container">
       <div class="row hour" id="c-time-r-a"><h4>9:00 AM</h4></div>
       <div class="row to-do" id="c-todo-r-a"><textarea type="text" class="textarea text-box" id="tb-a" placeholder="Description"></textarea></div>
@@ -80,6 +90,8 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./Assets/js/script.js"></script>
   </body>

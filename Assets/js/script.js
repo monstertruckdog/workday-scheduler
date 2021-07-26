@@ -1,5 +1,16 @@
 var textArea = $('.textarea');
 var saveButton = $('.saveBtn');
+var idTimeLabels = [
+    $('#c-time-r-a h4'),
+    $('#c-time-r-b h4'),
+    $('#c-time-r-c h4'),
+    $('#c-time-r-d h4'),
+    $('#c-time-r-e h4'),
+    $('#c-time-r-f h4'),
+    $('#c-time-r-g h4'),
+    $('#c-time-r-h h4'),
+    $('#c-time-r-i h4'),
+]
 var idTextAreaDiv = {
     0: $('#c-todo-r-a'),
     1: $('#c-todo-r-b'),
@@ -146,18 +157,18 @@ function retrieveDescription() {
     // console.log(`06  This will be inserted into the description text row:  ${$("#tb-c").val(localStorage.getItem('11:00 AM'))}`);
     // console.log(`--> retrieveDescription --> before loop --> value of 'memory':  `, memory); // <-- undefined
     // console.log(`--> retrieveDescription --> before loop --> length of 'memory':  `, memory.length) // <-- undefined
-    console.log(`--> retrieveDescription --> before loop --> value of 'localStorage':  `, localStorage)
-    console.log(`--> retrieveDescription --> before loop --> length of 'localStorage':  `, localStorage.length)
+    // console.log(`--> retrieveDescription --> before loop --> value of 'localStorage':  `, localStorage)
+    // console.log(`--> retrieveDescription --> before loop --> length of 'localStorage':  `, localStorage.length)
     // console.log(`--> retrieveDescription --> before loop --> value of 'memory.HOUR':  `, localStorage.getItem('9:00 AM'));
     // console.log(`--> retrieveDescription --> before loop --> value of single memoryItem using index for .key():  `, localStorage.getItem(localStorage.key([1])))
-    console.log(`--> --------------------------------------------------------------------- <--`)
+    // console.log(`--> --------------------------------------------------------------------- <--`)
     for (var i = 0; i < hours.length; i++) {
         // var memoryItem = JSON.parse(localStorage.getItem(memory.HOUR)[i]);
         var memoryItem = localStorage.getItem(localStorage.key([i]));
         
         console.log(`--> retrieveDescription --> index:  `, i)
         console.log(`--> retrieveDescription --> memoryItem (raw):  ${memoryItem}`)
-        console.log(`--> retrieveDescription --> memoryItem (from key):  `, localStorage.getItem('9:00 AM'));
+        // console.log(`--> retrieveDescription --> memoryItem (from key):  `, localStorage.getItem('9:00 AM'));
         // console.log(`--> retrieveDescription --> inside loop --> memoryItem from methods:  `, localStorage.getItem(localStorage.key([i])))
         // if (memory[i] !== null && memory[i] !== undefined) {
         /*
@@ -169,15 +180,21 @@ function retrieveDescription() {
             return;
         }
         */
-       console.log(`--> ----------------- S T A R T   I F -------------------------- <--`);
-       console.log(`--> retrieveDescription --> inside loop --> BEFORE IF --> key per index: [i] --> `, localStorage.key([i]));
-       console.log(`--> retrieveDescription --> inside loop --> BEFORE IF --> idTextAreaDiv[i] --> `, idTextAreaDiv[i])
-       console.log(`--> retrieveDescription --> inside loop --> BEFORE IF --> idTextAreaDiv[i] Value --> `, idTextAreaDiv[i].val())
-        if (/* memoryItem && */ idTextAreaDiv[i].val() === '9:00 AM') {
+        console.log(`--> ----------------- S T A R T   I F -------------------------- <--`);
+        console.log(`--> retrieveDescription --> 01 - ROW LABEL WHERE DATA SHOULD BE ENTERED:  `, idTimeLabels[i].text())
+        console.log(`--> retrieveDescription --> 02 - TEXT VALUE THAT SHOULD BE INSERTED INTO ROW:  `, memoryItem)
+        //console.log(`--> retrieveDescription --> inside loop --> BEFORE IF --> key per index: [i] --> `, localStorage.key([i]));
+        // console.log(`--> retrieveDescription --> inside loop --> BEFORE IF --> idTextAreaDiv[i] --> `, idTextAreaDiv[i])
+        // console.log(`--> retrieveDescription --> inside loop --> BEFORE IF --> idTextAreaDiv[i] Value - ATTEMPT 1 --> `, $(`idTextAreaBox[0] h4`).text())
+        // console.log(`--> retrieveDescription --> inside loop --> BEFORE IF --> idTextAreaDiv[i] Value --> ATTEMPT 2 -->`, $('#c-todo-r-a h4').text())
+        // console.log(`--> retrieveDescription --> inside loop --> BEFORE IF --> idTextAreaDiv[i] Value --> ATTEMPT 2 -->`, $('#c-time-r-a h4').text())
+        
+        if (/* memoryItem && */ idTimeLabels[i].text() === '9:00 AM') {
             
             // console.log(`--> retrieveDescription --> inside loop --> inside if --> memoryItem per index:  `, memoryItem);
             // console.log(`--> retrieveDescription --> inside loop --> inside if --> other half of memoryItem per index:  `, localStorage.getItem(localStorage.value([i])))
-            idTextAreaBox[0].val(memoryItem)
+            // idTextAreaBox[0] === memoryItem
+            idTextAreaBox[0].text() === memoryItem;
             /*
             switch (localStorage.key([i])) {
                 case '9:00 AM':

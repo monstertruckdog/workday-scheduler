@@ -11,28 +11,28 @@ var idTimeLabels = [
     $('#c-time-r-h h4'),
     $('#c-time-r-i h4'),
 ]
-var idTextAreaDiv = {
-    0: $('#c-todo-r-a'),
-    1: $('#c-todo-r-b'),
-    2: $('#c-todo-r-c'),
-    3: $('#c-todo-r-d'),
-    4: $('#c-todo-r-e'),
-    5: $('#c-todo-r-f'),
-    6: $('#c-todo-r-g'),
-    7: $('#c-todo-r-h'),
-    8: $('#c-todo-r-i')
-};
-var idTextAreaBox = {
-    0: $('#tb-a'),
-    1: $('#tb-b'),
-    2: $('#tb-c'),
-    3: $('#tb-d'),
-    4: $('#tb-e'),
-    5: $('#tb-f'),
-    6: $('#tb-g'),
-    7: $('#tb-h'),
-    8: $('#tb-i')
-};
+var idTextAreaDiv = [
+    $('#c-todo-r-a'),
+    $('#c-todo-r-b'),
+    $('#c-todo-r-c'),
+    $('#c-todo-r-d'),
+    $('#c-todo-r-e'),
+    $('#c-todo-r-f'),
+    $('#c-todo-r-g'),
+    $('#c-todo-r-h'),
+    $('#c-todo-r-i')
+];
+var idTextAreaBox = [
+    $('#tb-a'),
+    $('#tb-b'),
+    $('#tb-c'),
+    $('#tb-d'),
+    $('#tb-e'),
+    $('#tb-f'),
+    $('#tb-g'),
+    $('#tb-h'),
+    $('#tb-i')
+];
 var hours = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 let memory;
 /*
@@ -85,25 +85,35 @@ function saveDescription(saveId) {
         'HOUR 05\:00 PM': idTextAreaBox[8].val()
     }
     */
+    /*
 
     memory = {
-        'HOUR': {
-           '9\:00 AM': idTextAreaBox[0].val(),
-           '10\:00 AM': idTextAreaBox[1].val(),
-           '11\:00 AM': idTextAreaBox[2].val(),
-           '12\:00 PM': idTextAreaBox[3].val(),
-           '01\:00 PM': idTextAreaBox[4].val(),
-           '02\:00 PM': idTextAreaBox[5].val(),
-           '03\:00 PM': idTextAreaBox[6].val(),
-           '04\:00 PM': idTextAreaBox[7].val(),
-           '05\:00 PM': idTextAreaBox[8].val()
-       }
+        '9:00_AM': idTextAreaBox[0].val(),
+        '10:00_AM': idTextAreaBox[1].val(),
+        '11\:00_AM': idTextAreaBox[2].val(),
+        '12\:00_PM': idTextAreaBox[3].val(),
+        '01\:00_PM': idTextAreaBox[4].val(),
+        '02\:00_PM': idTextAreaBox[5].val(),
+        '03\:00_PM': idTextAreaBox[6].val(),
+        '04\:00_PM': idTextAreaBox[7].val(),
+        '05\:00_PM': idTextAreaBox[8].val()
     }
+    */
+    memory = [
+        idTextAreaBox[0].val(),
+        idTextAreaBox[1].val(),
+        idTextAreaBox[2].val(),
+        idTextAreaBox[3].val(),
+        idTextAreaBox[4].val(),
+        idTextAreaBox[5].val(),
+        idTextAreaBox[6].val(),
+        idTextAreaBox[7].val(),
+        idTextAreaBox[8].val()
+    ]
     console.log(`--> saveDescription --> memory (raw):  `, memory);
-    console.log(`--> saveDescription --> memory (memory.hour):  `, memory.hour);
-    console.log(`--> saveDescription --> memory (memory.HOUR):  `, memory.HOUR);
-    console.log(`--> saveDescription --> memory (memory.HOUR values):  `, Object.values((memory.HOUR))[0]); // --> this works
-    console.log(`--> saveDescription --> memory (memory.HOUR keys):  `, Object.keys((memory.HOUR))[0]); // --> this works
+    console.log(`--> saveDescription --> memory (raw[0]):  `, memory[0])
+    // console.log(`--> saveDescription --> memory (memory.HOUR values):  `, Object.values((memory.HOUR))[0]); // --> this works
+    // console.log(`--> saveDescription --> memory (memory.HOUR keys):  `, Object.keys((memory.HOUR))[0]); // --> this works
     /*
     if (saveId == 'c-save-r-a') { // TO DO:  convert to case statement?
         localStorage.setItem(Object.keys(memory.HOUR)[0], Object.values(memory.HOUR)[0]);
@@ -129,23 +139,24 @@ function saveDescription(saveId) {
     */
     switch (saveId) {
         case 'c-save-r-a':
-            localStorage.setItem(Object.keys(memory.HOUR)[0], Object.values(memory.HOUR)[0]);
+            // localStorage.setItem(Object.keys(memory.HOUR)[0], Object.values(memory.HOUR)[0]);
+            localStorage.setItem('9:00 AM', memory[0]);
         case 'c-save-r-b':
-            localStorage.setItem(Object.keys(memory.HOUR)[1], Object.values(memory.HOUR)[1]);
+            localStorage.setItem('10:00 AM', memory[1]);
         case 'c-save-r-c':
-            localStorage.setItem(Object.keys(memory.HOUR)[2], Object.values(memory.HOUR)[2]);
+            localStorage.setItem('11:00 AM', memory[2]);
         case 'c-save-r-d':
-            localStorage.setItem(Object.keys(memory.HOUR)[3], Object.values(memory.HOUR)[3]);
+            localStorage.setItem('12:00 PM', memory[3]);
         case 'c-save-r-e':
-            localStorage.setItem(Object.keys(memory.HOUR)[4], Object.values(memory.HOUR)[4]);
+            localStorage.setItem('1:00 PM', memory[4]);
         case 'c-save-r-f':
-            localStorage.setItem(Object.keys(memory.HOUR)[5], Object.values(memory.HOUR)[5]);
+            localStorage.setItem('2:00 PM', memory[5]);
         case 'c-save-r-g':
-            localStorage.setItem(Object.keys(memory.HOUR)[6], Object.values(memory.HOUR)[6]);
+            localStorage.setItem('3:00 PM', memory[6]);
         case 'c-save-r-h':
-            localStorage.setItem(Object.keys(memory.HOUR)[7], Object.values(memory.HOUR)[7]);
+            localStorage.setItem('4:00 PM', memory[7]);
         case 'c-save-r-i':
-            localStorage.setItem(Object.keys(memory.HOUR)[8], Object.values(memory.HOUR)[8]);
+            localStorage.setItem('5:00 PM', memory[8]);
         }
 
     // return;
@@ -164,10 +175,10 @@ function retrieveDescription() {
     // console.log(`--> --------------------------------------------------------------------- <--`)
     for (var i = 0; i < hours.length; i++) {
         // var memoryItem = JSON.parse(localStorage.getItem(memory.HOUR)[i]);
-        var memoryItem = localStorage.getItem(localStorage.key([i]));
+        // var memoryItem = localStorage.getItem(idTimeLabels[i].text());
+        console.log(`--> ----------------- S T A R T -------------------------- <--`);
         
         console.log(`--> retrieveDescription --> index:  `, i)
-        console.log(`--> retrieveDescription --> memoryItem (raw):  ${memoryItem}`)
         // console.log(`--> retrieveDescription --> memoryItem (from key):  `, localStorage.getItem('9:00 AM'));
         // console.log(`--> retrieveDescription --> inside loop --> memoryItem from methods:  `, localStorage.getItem(localStorage.key([i])))
         // if (memory[i] !== null && memory[i] !== undefined) {
@@ -180,53 +191,61 @@ function retrieveDescription() {
             return;
         }
         */
-        console.log(`--> ----------------- S T A R T   I F -------------------------- <--`);
-        console.log(`--> retrieveDescription --> 01 - ROW LABEL WHERE DATA SHOULD BE ENTERED:  `, idTimeLabels[i].text())
-        console.log(`--> retrieveDescription --> 02 - TEXT VALUE THAT SHOULD BE INSERTED INTO ROW:  `, memoryItem)
+    
+        // console.log(`--> retrieveDescription --> 01 - ROW LABEL WHERE DATA SHOULD BE ENTERED:  `, idTimeLabels[i].text())
+        // console.log(`--> retrieveDescription --> 02 - TEXT VALUE THAT SHOULD BE INSERTED INTO ROW:  `, memoryItem)
         //console.log(`--> retrieveDescription --> inside loop --> BEFORE IF --> key per index: [i] --> `, localStorage.key([i]));
         // console.log(`--> retrieveDescription --> inside loop --> BEFORE IF --> idTextAreaDiv[i] --> `, idTextAreaDiv[i])
         // console.log(`--> retrieveDescription --> inside loop --> BEFORE IF --> idTextAreaDiv[i] Value - ATTEMPT 1 --> `, $(`idTextAreaBox[0] h4`).text())
         // console.log(`--> retrieveDescription --> inside loop --> BEFORE IF --> idTextAreaDiv[i] Value --> ATTEMPT 2 -->`, $('#c-todo-r-a h4').text())
         // console.log(`--> retrieveDescription --> inside loop --> BEFORE IF --> idTextAreaDiv[i] Value --> ATTEMPT 2 -->`, $('#c-time-r-a h4').text())
         
-        if (/* memoryItem && */ idTimeLabels[i].text() === '9:00 AM') {
+        // if (/* memoryItem && */ idTimeLabels[i].text() === '9:00 AM') {
             
             // console.log(`--> retrieveDescription --> inside loop --> inside if --> memoryItem per index:  `, memoryItem);
             // console.log(`--> retrieveDescription --> inside loop --> inside if --> other half of memoryItem per index:  `, localStorage.getItem(localStorage.value([i])))
             // idTextAreaBox[0] === memoryItem
-            idTextAreaBox[0].text() === memoryItem;
-            /*
-            switch (localStorage.key([i])) {
+            // idTextAreaBox[0].text() === memoryItem;
+            
+            switch (idTimeLabels[i].text()) {
                 case '9:00 AM':
-                    idTextAreaBox[0].val(memoryItem);
+                    // idTextAreaBox[0].text() === localStorage.getItem('9:00 AM')
+                    idTextAreaBox[0].text(localStorage.getItem('9:00 AM'));
                     // return;
                 case '10:00 AM':
-                    idTextAreaBox[1].val(memoryItem);
+                    idTextAreaBox[1].text(localStorage.getItem('10:00 AM'));
                     // return;
                 case '11:00 AM':
-                    idTextAreaBox[2].val(memoryItem);
+                    // idTextAreaBox[2].text() === memoryItem;
+                    idTextAreaBox[2].text(localStorage.getItem('11:00 AM'))
                     // return;
                 case '12:00 PM':
-                    idTextAreaBox[3].val(memoryItem);
+                    // idTextAreaBox[3].text() === memoryItem
+                    idTextAreaBox[3].text(localStorage.getItem('12:00 PM'))
                     // return;
                 case '01:00 PM':
-                    idTextAreaBox[4].val(memoryItem);
+                    // idTextAreaBox[4].text() === memoryItem;
+                    idTextAreaBox[4].text(localStorage.getItem('1:00 PM'))
                     // return;
                 case '02:00 PM':
-                    idTextAreaBox[5].val(memoryItem);
+                    // idTextAreaBox[5].text() === memoryItem;
+                    idTextAreaBox[5].text(localStorage.getItem('2:00 PM'))
                     // return;
                 case '03:00 PM':
-                    idTextAreaBox[6].val(memoryItem);
+                    // idTextAreaBox[6].text() === memoryItem;
+                    idTextAreaBox[6].text(localStorage.getItem('3:00 PM'))
                     // return;
                 case '04:00 PM':
-                    idTextAreaBox[7].val(memoryItem);
+                    // idTextAreaBox[7].text() === memoryItem;
+                    idTextAreaBox[7].text(localStorage.getItem('4:00 PM'))
                     // return;
                 case '05:00 PM':
-                    idTextAreaBox[8].val(memoryItem);
+                    // idTextAreaBox[8].text() === memoryItem;
+                    idTextAreaBox[8].text(localStorage.getItem('5:00 PM'))
                     // return;
                 
             }
-            */
+            /*
         } else if (localStorage.key([i]) === '10:00 AM') {
             idTextAreaBox[1].val(memoryItem);
         } else if (localStorage.key([i]) === '11:00 AM') {
@@ -235,7 +254,7 @@ function retrieveDescription() {
             idTextAreaBox[3].val(memoryItem);
         } else {
             console.log('TEST OVER')
-        }
+        } */
     }
     
 };

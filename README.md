@@ -37,7 +37,7 @@ The fifth homework assignment entails creating a simple, single-page day calenda
 
 ![02_display_withexisting_withsaved_withtoast](./Assets/images/02_display_withexisting_withsaved_withtoast.png)
 
-##Highlights and Features
+## Highlights and Features
 
 * Simple click, enter, click save design
 * Quick local storage display rendering
